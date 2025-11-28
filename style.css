@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
-  /* degradado suave usando blanco, azul claro y gris oscuro */
-  background: linear-gradient(180deg, #77c2df 0%, #f4f5f7 45%, #f6443b 100%);
-  color: #111;
+  font-family: 'Roboto', Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
   margin: 0;
   padding: 0;
-  text-align: center;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
 header {
@@ -124,47 +126,95 @@ nav a:focus {
 }
 
 section {
-  padding: 22px;
-  margin: 14px auto;
-  max-width: 1000px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.9); /* blanco translúcido */
-  box-shadow: 0 8px 26px rgba(16,24,40,0.06);
+  padding: 40px 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
   color: #0f1720;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* imágenes y galería */
+#galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
 img {
-  width: 200px;
-  margin: 10px;
-  border-radius: 10px;
-  transition: transform .2s, box-shadow .2s;
-  border: 2px solid #14156f; /* gris claro */
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin: 0;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #e0e7ff;
+  object-fit: cover;
 }
 img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 30px rgba(2,6,23,0.18);
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
 /* estilos para subtítulos y listas */
-h1, h2 {
-  color: #0b132b; /* azul muy oscuro / casi negro */
-  margin: 6px 0 12px;
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 20px 0;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-ul {
-  list-style: none;
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #334155;
+  margin: 0 0 15px 0;
+  text-align: center;
+}
+
+#servicios ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
   padding: 0;
-  margin: 0 auto;
-  display: inline-block;
-  text-align: left;
+  margin: 0;
+  list-style: none;
 }
-ul li {
-  background: linear-gradient(90deg, #ffffff, #f1f5fb);
-  padding: 8px 12px;
-  margin: 6px 0;
-  border-radius: 8px;
-  border-left: 6px solid #b31217; /* franja roja */
-  color: #081028;
+
+#servicios li {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  padding: 15px 20px;
+  border-radius: 12px;
+  border-left: 5px solid #dc2626;
+  color: #374151;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 200px;
+  max-width: 250px;
+  text-align: center;
+}
+
+#servicios li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 /* pie de página */
@@ -209,10 +259,52 @@ footer {
   padding: 6px;
 }
 
-/* responsive básico */
-@media (max-width: 720px) {
-  .logo { width: 64px; }
-  img { width: 140px; }
-  .redes img { width: 30px; }
-  section { margin: 10px; padding: 16px; }
+/* responsive design */
+@media (max-width: 1024px) {
+  section {
+    max-width: 90%;
+    padding: 30px 15px;
+  }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px 10px;
+  }
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  nav a {
+    margin: 5px;
+  }
+  section {
+    margin: 15px 10px;
+    padding: 20px 15px;
+  }
+  #galeria {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  #servicios ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  #servicios li {
+    max-width: 100%;
+  }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.3rem; }
+}
+
+@media (max-width: 480px) {
+  .logo { width: 50px; }
+  img { max-width: 150px; }
+  .redes img { width: 28px; }
+  section { margin: 10px 5px; padding: 15px 10px; }
+  footer { padding: 15px; }
 }
